@@ -3,8 +3,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
-import { authRouter } from './routes/auth';
-import { employeesRouter } from './routes/employees';
+import { authRouter } from './routes/auth.js';
+import { employeesRouter } from './routes/employees.js';
 
 export const createApp = () => {
   const app = express();

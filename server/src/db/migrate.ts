@@ -1,4 +1,4 @@
-import { db } from './client';
+import { db } from './client.js';
 import bcrypt from 'bcryptjs';
 
 db.exec(`

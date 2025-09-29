@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import { createApp } from './app';
-import './db/migrate';
+import { createApp } from './app.js';
+import './db/migrate.js';
 
 const app = createApp();
 const PORT = Number(process.env.PORT || 8080);

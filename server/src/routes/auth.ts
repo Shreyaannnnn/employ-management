@@ -1,8 +1,8 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
 import bcrypt from 'bcryptjs';
-import { db } from '../db/client';
-import { signToken } from '../auth/jwt';
+import { db } from '../db/client.js';
+import { signToken } from '../auth/jwt.js';
 
 export const authRouter = Router();
 

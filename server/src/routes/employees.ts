@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { z } from 'zod';
-import { db } from '../db/client';
-import { requireAuth } from '../middlewares/auth';
+import { db } from '../db/client.js';
+import { requireAuth } from '../middlewares/auth.js';
 
 export const employeesRouter = Router();
 
