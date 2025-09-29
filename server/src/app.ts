@@ -8,8 +8,26 @@ import { employeesRouter } from './routes/employees.js';
 
 export const createApp = () => {
   const app = express();
-  app.use(helmet());
-  app.use(cors());
+  
+  // CORS configuration - MUST come before helmet
+  const corsOptions = {
+    origin: process.env.FRONTEND_URL || '*', // Add your frontend URL to .env
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    credentials: true,
+    optionsSuccessStatus: 200,
+  };
+  
+  app.use(cors(corsOptions));
+  
+  // Handle preflight requests explicitly
+  app.options('*', cors(corsOptions));
+  
+  // Helmet with CORS-friendly settings
+  app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" }
+  }));
+  
   app.use(express.json());
 
   const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 300 });
@@ -33,5 +51,3 @@ export const createApp = () => {
 };
 
 export type AppType = ReturnType<typeof createApp>;
-
-
