@@ -29,22 +29,24 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="max-w-md mx-auto py-16">
-      <h1 className="text-2xl font-semibold mb-6">Login</h1>
-      {error && <p className="text-red-600 mb-3">{error}</p>}
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
-          <label className="block mb-1">Email</label>
-          <input className="border px-3 py-2 w-full" type="email" {...register("email")} />
-          {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
-        </div>
-        <div>
-          <label className="block mb-1">Password</label>
-          <input className="border px-3 py-2 w-full" type="password" {...register("password")} />
-          {errors.password && <p className="text-red-600 text-sm">{errors.password.message}</p>}
-        </div>
-        <button disabled={isSubmitting} className="bg-black text-white px-4 py-2">{isSubmitting ? "Logging in..." : "Login"}</button>
-      </form>
+    <div className="container py-16">
+      <div className="card p-6 max-w-md mx-auto">
+        <h1 className="text-2xl font-semibold mb-6">Login</h1>
+        {error && <p className="text-red-600 mb-3">{error}</p>}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <label className="block mb-1">Email</label>
+            <input className="input" type="email" {...register("email")} />
+            {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
+          </div>
+          <div>
+            <label className="block mb-1">Password</label>
+            <input className="input" type="password" {...register("password")} />
+            {errors.password && <p className="text-red-600 text-sm">{errors.password.message}</p>}
+          </div>
+          <button disabled={isSubmitting} className="btn btn-primary w-full">{isSubmitting ? "Logging in..." : "Login"}</button>
+        </form>
+      </div>
     </div>
   );
 }
